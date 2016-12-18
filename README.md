@@ -51,7 +51,7 @@ The HelloWorld class has one method called `main`. The `public` keyword at the s
 
 This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is.
 
-Inside this method we print the string "Hello World!" to the terminal. More complex programs will do more complex things here of course.
+Inside this method we print the string `Hello World!` to the terminal. More complex programs will do more complex things here of course.
 
 To run this program we first have to compile it in order to convert it into a format java can execute it. To do this open a terminal and navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
 
