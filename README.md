@@ -1,13 +1,16 @@
 # This document is work in progress!
 
-# What you will learn in this tutorial
-When you have completed this tutoral you will know the very basics of the Java programming language. You will have written a simple calculator which can add, subtract, multiply and divide two interger digits. 
+# Before we start
+Before we start here are some things you might want to know. These sections should tell you if this tutorial is for you. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
 
-# What do you need to know?
-// TODO
+## What do you need to know?
+This tutorial is for beginners so you don't have to know programming yet. Actually it is good if you don't know programming yet. It is beneficial if you know how to use a terminal, although we only need it to execute our programs. The only real preconditions are that you know how to use a computer and are motivated to learn something new ;). At the end of this tutorial there is a [FAQ section](#faq) with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
 
-# What you will not learn in this tutorial
-We will not cover Object Oriented Programming (OOP) or any other more advanced feature of Java since this would go beyond the scope of this tutorial.
+## What you will learn in this tutorial
+At the end of this tutorial you will know the very basics of the Java programming language. You will have written a few basic applications to learn the basics. And hopefully you will have discovered how awesome programming is.
+
+## What you will not learn in this tutorial
+As I said before this tutorial does only cover the very basics. We will not cover more advanced concepts such as Object Oriented Programming (OOP).
 
 # Setup
 If you want to write java programs you only need two things, a text editor and the JDK (Java Development Toolkit). 
@@ -22,14 +25,17 @@ If don't get such a response you have to install the JDK. To do that go to [this
 
 When you don't know which text editor to use I can recommend the [Sublime Text](https://www.sublimetext.com/) editor but you can choose any other editor, too.
 
+For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I don't think that these editors are helpful if you are just learning java. They would probably be more distracting than helpful.
 
-For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features.
+The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git`. If you don't have `git` installed or you don't know what cloning means, check out [this short tutorial](https://help.github.com/articles/cloning-a-repository/). 
 
-The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git` and open the project your text editor. The `app` folder is your working directory. There all your files should be placed. In the solution folder you can find the complete solution of this tutorial. You can always check there how my solution to the problem of this tutoral looks like.
+After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solution for this tutorial. You can always check there how my solution looks like.
 
 
 # Hello World
-Typically if you learn a new programming language the first program you write will be a so called 'Hello World' Program. This program will run without any errors and print 'Hello World' to the terminal. Create a file called `HelloWorld.java` inside the app folder and open it in your text editor. If you copy the following code to the file you will have a fully functional Hello World Program.
+Typically if you learn a new programming language the first program you write will be a so called 'Hello World' Program. This program will run without any errors and print 'Hello World' to the terminal. 
+
+First you need to create a `helloWorld` folder in the app directory and create a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file, copy the following code to the file and you have your first fully functional Hello World Program created.
 
 ```
 public class HelloWorld {
@@ -47,4 +53,14 @@ This `main` method is a special method that defines the main entrypoint of your 
 
 Inside this method we print the string "Hello World!" to the terminal. More complex programs will do more complex things here of course.
 
-To run this program we first have to compile it in order to convert it into a format java can execute it. To do this navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
+To run this program we first have to compile it in order to convert it into a format java can execute it. To do this open a terminal and navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
+
+# FAQ
+## How do I open a terminal?
+On Windows: http://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/ <br>
+On Mac: http://www.wikihow.com/Open-a-Terminal-Window-in-Mac <br>
+On Linux: http://askubuntu.com/a/38220
+
+## How do I navigate in a terminal?
+On Mac & Linux: Use the `cd <path>` [(change directory) command](http://linuxcommand.org/lc3_man_pages/cdh.html), e.g. `cd /Users/<username>/Desktop` on a mac.<br>
+On Windows: Use the `dir <path>` [command](http://www.computerhope.com/dirhlp.htm), e.g. `dir C:\`
