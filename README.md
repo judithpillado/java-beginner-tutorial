@@ -37,7 +37,7 @@ Typically if you learn a new programming language the first program you write wi
 
 First you need to create a `helloWorld` folder in the app directory and create a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file, copy the following code to the file and you have your first fully functional Hello World Program created.
 
-```
+```java
 public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -54,6 +54,91 @@ This `main` method is a special method that defines the main entrypoint of your 
 Inside this method we print the string `Hello World!` to the terminal. More complex programs will do more complex things here of course.
 
 To run this program we first have to compile it in order to convert it into a format java can execute it. To do this open a terminal and navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
+
+# Static Calculator
+Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator application that can operate with two numbers.
+
+In the app folder create a new directory called `staticCalculator` and add a new file `Calculator.java` in there. Open the `Calculator.java` file and add the following base structure of our calculator.
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		// add calculator code here
+	}
+}
+```
+
+As you can see the main method only contains a single line comment. This code is not executed and just adds additional information for the developers. Besides the single line comments (which start with `//`) there are also mutli line comments. These comments start with `/*` and end with `*/` and can contain line breaks.
+
+Now we need two digits our calculator can work with. To do this replace the comment with the two variable declarations `int a = 1;` and `int b = 2;`. The result should be something like this:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = 1;
+		int b = 2;
+	}
+}
+```
+We have just created two integer variables that hold the digits 1 and 2. There are [other datatypes](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) but if you need a number, integer is very often what you need.
+
+To keep things simple we will only supports adding two numbers at first. Subtractions, mutliplications and divisions are added later. To do this we create a third variable called `result` which hold the sum of `a` and `b`. After we have calculated the sum we also want to print in out.
+
+Here is my solution to this problem:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = 1;
+		int b = 2;
+		int result = a + b;
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+When you compile the app with `javac Calculator.java` and then run `java -cp . Calculator` you should see `Result: 3` in your terminal.
+
+Now you've finished your first calculator app. Even though this app is rather limited in its functionality we are making great progress. Next we want to make the variables `a` and `b` configurable from the outside. As we've already learned above there is the `args` parameter that contains parameters passed from the outside. Now we are going to use this parameter to make our two variables configurable.
+
+When we set `a` to the first value of the `args` array and `b` to the second value our result will be dynamically calculated every time the application runs. Before we can do this you have to know that arrays in java are zero based. This means that the first value of every array can be read on the index 0, the second one on the index 1 and so on. Therefore the new variable declarations should look like `int a = args[0];` and `int b = args[1];`.
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = args[0];
+		int b = args[1];
+		int result = a + b;
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+When we compile the calculator again using `javac Calculator.java` we can run the application and pass two parameters to it using `java -cp . Calculator 4 5`. However you will soon notice that this doesn't work as expected. We get an error that tells us that there are incopatible types in our assignment.
+
+```
+Calculator.java:3: error: incompatible types: String cannot be converted to int
+		int a = args[0];
+		            ^
+Calculator.java:4: error: incompatible types: String cannot be converted to int
+		int b = args[1];
+		            ^
+2 errors
+```
+
+The reason for this error is that we want to assign values from a string array to integer values. Since the string array could contain any string values, the compiler cannot guarantee that the assignment to an integer variable will always pass and therefore throws an error. To fix this we have to wrap the array reads with an `Integer.valueOf()` method call like this:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]);
+		int result = a + b;
+		System.out.println("Result: " + result);
+	}
+}
+```
+
 
 # FAQ
 ## How do I open a terminal?
