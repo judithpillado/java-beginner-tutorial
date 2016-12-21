@@ -114,7 +114,7 @@ public class Calculator {
 }
 ```
 
-When we compile the calculator again using `javac Calculator.java` we can run the application and pass two parameters to it using `java -cp . Calculator 4 5`. However you will soon notice that this doesn't work as expected. We get an error that tells us that there are incopatible types in our assignment.
+When we compile the calculator again using `javac Calculator.java` you will soon notice that this doesn't work as expected. We get an error that tells us that there are incopatible types in our assignment.
 
 ```
 Calculator.java:3: error: incompatible types: String cannot be converted to int
@@ -126,7 +126,15 @@ Calculator.java:4: error: incompatible types: String cannot be converted to int
 2 errors
 ```
 
-The reason for this error is that we want to assign values from a string array to integer values. Since the string array could contain any string values, the compiler cannot guarantee that the assignment to an integer variable will always pass and therefore throws an error. To fix this we have to wrap the array reads with an `Integer.valueOf()` method call like this:
+Java is statically and strongly typed. That means that every variable has to have a predefined type that cannot change over time. When you create a variable of the type `int` this variable can only hold integer values and can never hold for example a string value even when the string value might be `"2"`. 
+
+The Java type system consists of primitive datatypes such as `int` for integer values, `char` for characters or `float` for floating point numbers and classes. For each of the primitive datatypes also a class exists. For `int` also the `Integer` class exists, for `char` there is the `Character` class exists and so on. An instance of a class is called an object. This means a variable of the type `String` is an object of the `String` class. Our `int` values on the other hand aren't objects because their type is a primitive one. If we declare them as `Integer` they would be objects, too.
+
+One big difference between the primitive datatypes and the related classes is that primitive datatypes can only hold data whereas the classes also provide methods to manipulate the data the variable holds. For example you could convert an `Integer` value to a string by calling the `toString()` method.
+
+Another difference is that primitive datatypes must have a value assigned whereas objects can also be `null`. This means that there is no value for the object and we have to treat is specially because then we cannot use any methods of object.
+
+The reason for the error above is that we want to assign `String` values to `int` variables. As you now know this cannot work because of Javas type system. Nevertheless we can convert Strings into ints by wrapping the variable assignments with an `Integer.valueOf()` method call like this:
 
 ```java
 public class Calculator {
@@ -139,7 +147,117 @@ public class Calculator {
 }
 ```
 
+When you compile it now, everything should work fine. You now can run the application using `java -cp . Calculator 2 3`. Take some time to play with your Calculator and test which input values work and which don't.
 
+As may have noticed, as long as we pass two integer values to our app everything works fine. When we only pass one parameter or parameters that aren't integers we get errors, so called exceptions. For now we will ignore this and assume that the user of our program knows what parameters we expect. Later on we will also handle these exceptions.
+
+The next step is to support more arithmetic operations. We will again do this using a parameter and when we finished this task the call to our application should look like this: `java -cp . Calculator 2 3 A`. The third parameter stands for the operation and the supported options are A for add, S for subtract, M for multiply and D for divide. To decide which operation we have to apply we can use an `if` statement.
+
+An `if` statement only executes a code block if the condition in the if condition is fulfilled. To add the first option to our calculator we have to check if the third value of args is equal to `A` and if this is true we calculate the sum of `a` and `b`.
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]);
+		char operation = args[2].charAt(0);
+		int result = 0;
+
+		if (operation == 'A') {
+			result = a + b;
+		}
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+As you can see I've stored the operation in the `operation` variable because now the rest of the code gets more readable. Also we need to get the first charater of the string stored in `args[2]` because we want to work with charaters instead of strings. The result variable has to be initialized to because it is now only set if the operation is equal to `A`.
+
+The if condition is a check if the `operation` is equal to `'A'`. Since `=` is an assignment there is also the `==` to check for equality.
+
+The if statement can also be extended with an `else` or an `else if` branch. Using these concepts we can also add the branches for the other operations.
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]);
+		char operation = args[2].charAt(0);
+		int result = 0;
+
+		if (operation == 'A') {
+			result = a + b;
+		} else if (operation == 'S') {
+			result = a - b;
+		} else if (operation == 'M') {
+			result = a * b;
+		} else if (operation == 'D') {
+			result = a / b;
+		} else {
+			System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
+			return;
+		}
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method.
+
+The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We could do this similar to this:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		if (args.length != 3) {
+			System.out.println("You need to pass three parameters to this Calculator. " +
+				"The first two must be integers and the last one a character that " +
+				"defines the operation (A, S, M or D)");
+			return;
+		}
+
+		int a = 0;
+		int b = 0;
+		char operation = args[2].charAt(0);
+		int result = 0;
+
+		try {
+			a = Integer.valueOf(args[0]);
+		} catch (NumberFormatException e) {
+			System.out.println("The first parameter is not an integer!");
+			return;
+		}
+
+		try {
+			b = Integer.valueOf(args[1]);
+		} catch (NumberFormatException e) {
+			System.out.println("The second parameter is not an integer!");
+			return;
+		}
+
+		if (operation == 'A') {
+			result = a + b;
+		} else if (operation == 'S') {
+			result = a - b;
+		} else if (operation == 'M') {
+			result = a * b;
+		} else if (operation == 'D') {
+			result = a / b;
+		} else {
+			System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
+			return;
+		}
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we can catch this exception in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
+
+# Dynamic Calculator
+// TODO
+# IDE
+// TODO
 # FAQ
 ## How do I open a terminal?
 On Windows: http://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/ <br>
