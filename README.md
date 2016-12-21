@@ -255,7 +255,43 @@ public class Calculator {
 At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we can catch this exception in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
 
 # Dynamic Calculator
-// TODO
+In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on these two numbers. After that the program finished and we had to start it again. Now we want to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
+
+First create a new folder in the `app` directory called `dynamicCalculator` and add a `Calculator.java` file in there. Then add the following code to the file:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = 0;
+		int b = 0;
+		int result = 0;
+	}
+}
+```
+
+Next we want to add user interaction to set the values of `a` and `b`. For each variable we need to print a message to the user, so that he knows what to do, and then read the value the user inputs. Reading a user input can be done using the Scanner class. Therefore the code for reading in `a` and `b` should look like this:
+
+```java
+import java.util.Scanner;
+
+public class Calculator {
+	public static void main(String[] args) {
+		int a = 0;
+		int b = 0;
+		int result = 0;
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Input a value for a: ");
+		a = scanner.nextInt();
+		System.out.print("Input a value for b: ");
+		b = scanner.nextInt();
+
+		result = a + b;
+		System.out.println("Result: " + result);
+	}
+}
+``` 
+
 # IDE
 // TODO
 # FAQ
