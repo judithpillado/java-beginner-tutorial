@@ -2,17 +2,37 @@ import java.util.Scanner;
 
 public class Calculator {
 	public static void main(String[] args) {
-		int a = 0;
-		int b = 0;
-		int result = 0;
+		String operation = "A";
 
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Input a value for a: ");
-		a = scanner.nextInt();
-		System.out.print("Input a value for b: ");
-		b = scanner.nextInt();
 
-		result = a + b;
-		System.out.println("Result: " + result);
+		while (!operation.equals("E") || !operation.equals("EXIT")) {
+			double result = 0;
+
+			System.out.print("Input a value for a: ");
+			double a = scanner.nextDouble();
+
+			System.out.print("Input a value for b: ");
+			double b = scanner.nextDouble();
+			
+			System.out.print("Input an operation: ");
+			operation = scanner.next();
+			
+			if (operation.equals("A") || operation.equals("ADD")) {
+				result = a + b;
+			} else if (operation.equals("S") || operation.equals("SUBTRACT")) {
+				result = a - b;
+			} else if (operation.equals("M") || operation.equals("MULTIPLY")) {
+				result = a * b;
+			} else if (operation.equals("D") || operation.equals("DIVIDE")) {
+				result = a / b;
+			} else if (operation.equals("E") || operation.equals("EXIT")) {
+				return;
+			} else {
+				System.out.println("Only the operations (A)DD, (S)UBTRACT, (M)ULTIPLY, (D)IVIDE and (E)XIT are allowed.");
+				continue;
+			}
+			System.out.println("Result: " + result);
+		}		
 	}
 }
