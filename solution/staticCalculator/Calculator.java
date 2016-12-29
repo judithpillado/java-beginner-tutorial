@@ -26,17 +26,22 @@ public class Calculator {
 			return;
 		}
 
-		if (operation == 'A') {
-			result = a + b;
-		} else if (operation == 'S') {
-			result = a - b;
-		} else if (operation == 'M') {
-			result = a * b;
-		} else if (operation == 'D') {
-			result = a / b;
-		} else {
-			System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
-			return;
+		switch (operation) {
+			case 'A':
+				result = a + b;
+				break;
+			case 'S':	
+				result = a - b;
+				break;
+			case 'M':
+				result = a * b;
+				break;
+			case 'D':
+				result = a / b;
+				break;
+			default:
+				System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
+				return;
 		}
 		System.out.println("Result: " + result);
 	}

@@ -3,12 +3,6 @@
 # Before we start
 Before we start here are some things you might want to know. These sections should tell you if this tutorial is for you. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
 
-## Why you should learn programming?
-// TODO
-
-## Why you should learn Java?
-// TODO
-
 ## What do you need to know?
 This tutorial is for beginners so you don't have to know programming yet. Actually it is good if you don't know programming yet. It is beneficial if you know how to use a terminal, although we only need it to execute our programs. The only real preconditions are that you know how to use a computer and are motivated to learn something new ;). At the end of this tutorial there is a [FAQ section](#faq) with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
 
@@ -33,7 +27,7 @@ When you don't know which text editor to use I can recommend the [Sublime Text](
 
 For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I don't think that these editors are helpful if you are just learning java. They would probably be more distracting than helpful.
 
-The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git`. If you don't have `git` installed or you don't know what cloning means, check out [this short tutorial](https://help.github.com/articles/cloning-a-repository/). 
+The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git`. `git` is a tool used for software development that helps you store your code on a server. This is especially helpful if you work with multiple people on a project. For this tutorial you just need to know how to download this repository but if you continue programming you should definitely learn more about `git`, too. If you don't have `git` installed or you don't know what cloning means, check out [this short tutorial](https://help.github.com/articles/cloning-a-repository/). 
 
 After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solution for this tutorial. You can always check there how my solution looks like.
 
@@ -208,7 +202,39 @@ public class Calculator {
 }
 ```
 
-Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method.
+Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method. Besides an `if` statment you can also use a `switch` statement when you have to execute one of multiple branches in your code. The same code as above using a `switch` statement would look similar to this:
+
+```java
+public class Calculator {
+	public static void main(String[] args) {
+		int a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]);
+		char operation = args[2].charAt(0);
+		int result = 0;
+
+		switch (operation) {
+			case 'A':
+				result = a + b;
+				break;
+			case 'S':	
+				result = a - b;
+				break;
+			case 'M':
+				result = a * b;
+				break;
+			case 'D':
+				result = a / b;
+				break;
+			default:
+				System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
+				return;
+		}
+		System.out.println("Result: " + result);
+	}
+}
+```
+
+Each case that should be supported gets covered by a `case` branch. Inside this `case` branch there is the opertation as well as a `break` statement. This is important to exit the switch after something was executed. When we would not add the break statement multiple cases might get executed. Similar to the `else` branch there is the `default` case inside the `switch` statement. This branch is executed when no other condition is met.
 
 The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We could do this similar to this:
 
@@ -241,17 +267,22 @@ public class Calculator {
 			return;
 		}
 
-		if (operation == 'A') {
-			result = a + b;
-		} else if (operation == 'S') {
-			result = a - b;
-		} else if (operation == 'M') {
-			result = a * b;
-		} else if (operation == 'D') {
-			result = a / b;
-		} else {
-			System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
-			return;
+		switch (operation) {
+			case 'A':
+				result = a + b;
+				break;
+			case 'S':	
+				result = a - b;
+				break;
+			case 'M':
+				result = a * b;
+				break;
+			case 'D':
+				result = a / b;
+				break;
+			default:
+				System.out.println("Only the operations 'A', 'S', 'M' and 'D' are allowed.");
+				return;
 		}
 		System.out.println("Result: " + result);
 	}
@@ -457,7 +488,7 @@ public class Calculator {
 
 		Scanner scanner = new Scanner(System.in);
 
-		while (!operation.equals("E") || !operation.equals("EXIT")) {
+		while (!operation.equals("E") && !operation.equals("EXIT")) {
 			double result = 0;
 
 			System.out.print("Input a value for a: ");
@@ -490,8 +521,7 @@ public class Calculator {
 ```
 
 Notice, that the condition of the while loop also changed. Instead of the `!=` we now use `!operation.equals()`.
-# IDE
-// TODO
+
 # FAQ
 ## How do I open a terminal?
 On Windows: http://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/ <br>
