@@ -7,7 +7,7 @@ public class Main {
 
 		Scanner scanner = new Scanner(System.in);
 
-		while (!operation.equals("E") || !operation.equals("EXIT")) {
+		while (!operation.equals("E") && !operation.equals("EXIT")) {
 			System.out.print("Input a value for a: ");
 			double a = scanner.nextDouble();
 
