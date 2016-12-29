@@ -6,7 +6,7 @@ public class Calculator {
 
 		Scanner scanner = new Scanner(System.in);
 
-		while (!operation.equals("E") || !operation.equals("EXIT")) {
+		while (!operation.equals("E") && !operation.equals("EXIT")) {
 			double result = 0;
 
 			System.out.print("Input a value for a: ");
