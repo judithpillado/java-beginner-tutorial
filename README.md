@@ -1,16 +1,19 @@
-# This document is work in progress!
+# Java - A Beginners Tutorial
+Are you motivated to learn how to program? Do you want to learn about the most popular programming language that currently exists? Then this tutorial is for you!
 
-# Before we start
-Before we start here are some things you might want to know. These sections should tell you if this tutorial is for you. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
+In the following lines you will learn how to create basic programs using the Java programming language. As I wrote before it is the [most popular programming language](http://www.tiobe.com/tiobe-index/) that currently exists. Therefore it makes perfect sense to know Java.
 
-## What do you need to know?
-This tutorial is for beginners so you don't have to know programming yet. Actually it is good if you don't know programming yet. It is beneficial if you know how to use a terminal, although we only need it to execute our programs. The only real preconditions are that you know how to use a computer and are motivated to learn something new ;). At the end of this tutorial there is a [FAQ section](#faq) with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
+Before we start here are some things you might want to know about this tutorial. In the following two sections I hope to tell you whether this tutorial is for you or not. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
+
+## Do you need to know how to program?
+This tutorial is for beginners so you don't have to know how to program yet. Actually this tutorial is for people who just start programming. If you already know how to code in another language you might be able to just skim the parts that describe some basic concepts. 
+
+Although we need the terminal just a few times, it is beneficial if you know how to use a terminal. If you aren't familiar with a terminal yet, you find a short [FAQ section](#faq) at the end of this file with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
 
 ## What you will learn in this tutorial
-At the end of this tutorial you will know the very basics of the Java programming language. You will have written a few basic applications to learn the basics. And hopefully you will have discovered how awesome programming is.
+At the end of this tutorial you will know the very basics of the Java programming language. You will have written a few basic applications and hopefully you will have discovered how awesome programming is.
 
-## What you will not learn in this tutorial
-As I said before this tutorial does only cover the very basics. We will not cover more advanced concepts such as Object Oriented Programming (OOP).
+However this tutorial does only cover the very basics. We will not cover more advanced concepts such as Object Oriented Programming (OOP).
 
 # Setup
 If you want to write java programs you only need two things, a text editor and the JDK (Java Development Toolkit). 
@@ -21,21 +24,20 @@ If you are not sure whether you have the JDK already installed open a Terminal a
 javac 1.8.0_101
 ```
 
-If don't get such a response you have to install the JDK. To do that go to [this website](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and download and install the appropriate version for your computer. After you have done that the command from above should bring up the desired output.
+If don't get such a response you have to install the JDK. To do that go to [this website](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and download and install the appropriate version for your computer. If you are on a Windows Computer you also have to [add the installation directory to your Path](http://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/). After you have done that the command from above should bring up the desired output.
 
-When you don't know which text editor to use I can recommend the [Sublime Text](https://www.sublimetext.com/) editor but you can choose any other editor, too.
+Now that we know that the JDK is installed we also need a good text editor. I can recommend the [Sublime Text](https://www.sublimetext.com/) editor but you can choose any other editor, too.
 
-For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I don't think that these editors are helpful if you are just learning java. They would probably be more distracting than helpful.
+For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I think that these editors are more distracting than helpful if you are just learning java. Therefore you will not need them by now.
 
 The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git`. `git` is a tool used for software development that helps you store your code on a server. This is especially helpful if you work with multiple people on a project. For this tutorial you just need to know how to download this repository but if you continue programming you should definitely learn more about `git`, too. If you don't have `git` installed or you don't know what cloning means, check out [this short tutorial](https://help.github.com/articles/cloning-a-repository/). 
 
-After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solution for this tutorial. You can always check there how my solution looks like.
-
+After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solutions for this tutorial. You can always check there how my solutions look like.
 
 # Hello World
-Typically if you learn a new programming language the first program you write will be a so called 'Hello World' Program. This program will run without any errors and print 'Hello World' to the terminal. 
+Typically if you learn a new programming language the first program you write is a so called 'Hello World' Program. The only thing this program does is to print 'Hello World' to the terminal. 
 
-First you need to create a `helloWorld` folder in the app directory and create a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file, copy the following code to the file and you have your first fully functional Hello World Program created.
+Before we can write any code we need to create a `helloWorld` folder inside the app directory and put a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file and copy the following code into the file to have your first fully functional Hello World Program.
 
 ```java
 public class HelloWorld {
@@ -45,15 +47,29 @@ public class HelloWorld {
 }
 ``` 
 
-Before we run it I will explain what every part does. The file starts with `public class` which creates a new Type. The class keyword is important for OOP but I wont explain it here in detail. After that the name of that comes the name of that type which is HelloWorld. It is important that the name of the class is the same as the name of the file. Otherwise you will get an error while compiling it.
+Before we run it I will briefly explain what every part does. The file starts with `public class HelloWorld` which creates a new publicly visible Type called `HelloWorld`. It is important that the name of the class is the same as the name of the file (the file name only has a `.java` appendix). 
 
-The HelloWorld class has one method called `main`. The `public` keyword at the start of this line indicates that this method can be called from everywhere in your program. The `static` keyword tells Java that you don't have to create an Instance of this class. This is again OOP specific and you can ignore it for now. The third keyword, `void`, tells you what this method is returning after it finishes. Since this method returns `void` we know that we get no result of this method. After `void` comes the name of this method. Inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. 
+After the name we start a code block with an open curly bracket `{`. At the very end of the file this code block is closed again with `}`. In Java everything inside these curly brackets belongs together.
 
-This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is.
+The `HelloWorld` class has one `public static` method called `main`. The `public` keyword indicates that this method can be called from everywhere in your program. The `static` keyword tells Java that you don't have to create an Instance of this class. This is again OOP specific and you can ignore it for now. 
 
-Inside this method we print the string `Hello World!` to the terminal. More complex programs will do more complex things here of course.
+The third keyword, `void`, tells you that this method returns nothing. If the method would return `int` or `String` instead of `void` we would know that   it returns an `int` or a `String` after it finishes.
 
-To run this program we first have to compile it in order to convert it into a format java can execute it. To do this open a terminal and navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
+After `void` comes the name of this method and inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. 
+
+This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is that has the exact same signature as the one above.
+
+The body (that's how the code inside the method is called) inside this method contains only one line of code. Here we print the string `Hello World!` to the terminal. If you create more complex programs you will do more complex things here, of course.
+
+Now that we know what the parts of this program do we can run it. To do this we need the Java Runtime Environment (JRE). Most computers already have the JRE installed, you've also installed it together with the JDK.
+
+However the JRE cannot understand this code as we wrote it above, we have to translate it into a special format. The process of doing that is called compiling and the format we need to compile the source code to is called the Bytecode. This is the secret sauce of Java! Since programs are converted in Bytecode every Java program can be executed on every Computer that has the JRE installed, no matter where you've compiled it. For other programming languages such as C++ or C this is not possible.
+
+To compile our program we need to open a terminal and navigate to the app folder of this repository. There we execute the following command `javac HelloWorld.java` which tells the Java compiler (`javac`) to compile the file `HelloWorld.java`. 
+
+This produces a `HelloWorld.class` file which then can be executed with the command `java -cp . HelloWorld`. 
+
+This command tells Java to execute the `HelloWorld` program in the current folder (`-cp .`). Now you should see the `Hello World!` in your terminal.
 
 # Static Calculator
 Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator application that can operate with two numbers.
