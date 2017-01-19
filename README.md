@@ -55,7 +55,7 @@ The `HelloWorld` class has one `public static` method called `main`. The `public
 
 The third keyword, `void`, tells you that this method returns nothing. If the method would return `int` or `String` instead of `void` we would know that   it returns an `int` or a `String` after it finishes.
 
-After `void` comes the name of this method and inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. 
+After `void` comes the name of this method and inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. This parameter can contain values that are passed from the user of your app from the outside.
 
 This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is that has the exact same signature as the one above.
 
@@ -72,7 +72,7 @@ This produces a `HelloWorld.class` file which then can be executed with the comm
 This command tells Java to execute the `HelloWorld` program in the current folder (`-cp .`). Now you should see the `Hello World!` in your terminal.
 
 # Static Calculator
-Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator application that can operate with two numbers.
+Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator that can operate with two numbers.
 
 In the app folder create a new directory called `staticCalculator` and add a new file `Calculator.java` in there. Open the `Calculator.java` file and add the following base structure of our calculator.
 
@@ -86,7 +86,7 @@ public class Calculator {
 
 As you can see the main method only contains a single line comment. This code is not executed and just adds additional information for the developers. Besides the single line comments (which start with `//`) there are also mutli line comments. These comments start with `/*` and end with `*/` and can contain line breaks.
 
-Now we need two digits our calculator can work with. To do this replace the comment with the two variable declarations `int a = 1;` and `int b = 2;`. The result should be something like this:
+To be able to operate with two numbers we need something that holds these two numbers. Therefore we need to replace the comment with the two variable declarations `int a = 1;` and `int b = 2;`. The result should look like this:
 
 ```java
 public class Calculator {
@@ -96,11 +96,9 @@ public class Calculator {
 	}
 }
 ```
-We have just created two integer variables that hold the digits 1 and 2. There are [other datatypes](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) but if you need a number, integer is very often what you need.
+Both variables can hold integers and are initialized with the digits 1 and 2 (these values can be changed later on). There are [other datatypes](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) we could have used but for now we stay with `int`.
 
-To keep things simple we will only supports adding two numbers at first. Subtractions, mutliplications and divisions are added later. To do this we create a third variable called `result` which hold the sum of `a` and `b`. After we have calculated the sum we also want to print in out.
-
-Here is my solution to this problem:
+To keep things simple we will only supports adding two numbers at first. Subtractions, mutliplications and divisions will be added later. When we calculated the result we need to store it somewhere. We could use one of the variables we already created - remember when I told you before that the values of the variables can be changed over time; this could be such a moment - however this might be confusing why we will create a third variable called `result`. This variable should hold the sum of `a`and `b`.
 
 ```java
 public class Calculator {
@@ -113,11 +111,17 @@ public class Calculator {
 }
 ```
 
+To be able to see the result we have to print it to the console. Similar to the first example we use the `System.out.println` method to do this. You can insert any string between the apostrophes, this will only affect the final string that will be printed to the terminal.
+
 When you compile the app with `javac Calculator.java` and then run `java -cp . Calculator` you should see `Result: 3` in your terminal.
 
-Now you've finished your first calculator app. Even though this app is rather limited in its functionality we are making great progress. Next we want to make the variables `a` and `b` configurable from the outside. As we've already learned above there is the `args` parameter that contains parameters passed from the outside. Now we are going to use this parameter to make our two variables configurable.
+Congratulations! We just finished the first program that calculates a value. Even though this app is rather limited in its functionality we are making great progress. 
 
-When we set `a` to the first value of the `args` array and `b` to the second value our result will be dynamically calculated every time the application runs. Before we can do this you have to know that arrays in java are zero based. This means that the first value of every array can be read on the index 0, the second one on the index 1 and so on. Therefore the new variable declarations should look like `int a = args[0];` and `int b = args[1];`.
+Next we want to make the variables `a` and `b` configurable from the outside. As we've already learned above there is the `args` parameter that contains parameters passed from the outside. We can use this to let the user configure which values should be added.
+
+When the user starts our calculator two integers should be passed to our program. Both these integers are passed inside the `args` parameter to our main method. We can set `a` to the first value of the `args` array and `b` to the second value. Our result will be dynamically calculated every time the application runs. 
+
+Java - actually a lot of programming languages - have the specialty that they are zero based. This means that typically when you want to set or retrieve the first value of an array or any other collection you have to start at the index `0`. Now as we know that we can change the variable declarations of `a`and `b` so that they look like `int a = args[0];` and `int b = args[1];`.
 
 ```java
 public class Calculator {
@@ -142,15 +146,19 @@ Calculator.java:4: error: incompatible types: String cannot be converted to int
 2 errors
 ```
 
-Java is statically and strongly typed. That means that every variable has to have a predefined type that cannot change over time. When you create a variable of the type `int` this variable can only hold integer values and can never hold for example a string value even when the string value might be `"2"`. 
+The good thing about the Java compiler is that if there is an error it tells you exactly where the error is. Most of the times you can tell exactly where the error is after reading these compiler errors. 
 
-The Java type system consists of primitive datatypes such as `int` for integer values, `char` for characters or `float` for floating point numbers and classes. For each of the primitive datatypes also a class exists. For `int` also the `Integer` class exists, for `char` there is the `Character` class exists and so on. An instance of a class is called an object. This means a variable of the type `String` is an object of the `String` class. Our `int` values on the other hand aren't objects because their type is a primitive one. If we declare them as `Integer` they would be objects, too.
+The reason why we get this error is that Java is statically and strongly typed. That means that every variable has to have a predefined type that cannot change over time. When you create a variable of the type `int` this variable can only hold integer values and can never hold for example a string value even when the string value might be `"2"`. Don't mix that up with what I've said before about the values of variables, they can change over time. However when you assign a new value to a variable its type cannot change.
 
-One big difference between the primitive datatypes and the related classes is that primitive datatypes can only hold data whereas the classes also provide methods to manipulate the data the variable holds. For example you could convert an `Integer` value to a string by calling the `toString()` method.
+The Java type system consists of primitive datatypes such as `int` for integer values, `char` for characters or `float` for floating point numbers and classes. For each of the primitive datatypes also a class exists. There is the `Integer` class that corresponds to the `int` type and so on. 
 
-Another difference is that primitive datatypes must have a value assigned whereas objects can also be `null`. This means that there is no value for the object and we have to treat is specially because then we cannot use any methods of object.
+An instance of a class is called an object. This means a variable of the type `String` is an object of the class `String`. Our `int` values on the other hand aren't objects because their type is a primitive one. If we declare them as `Integer` they would be objects, too.
 
-The reason for the error above is that we want to assign `String` values to `int` variables. As you now know this cannot work because of Javas type system. Nevertheless we can convert Strings into ints by wrapping the variable assignments with an `Integer.valueOf()` method call like this:
+One big difference between the primitive datatypes and classes is that primitive datatypes can only hold data whereas the classes also provide methods to manipulate the data the variable holds. For example you could convert an `Integer` object to a string by calling its `toString()` method.
+
+Another difference is that primitive datatypes must have a value assigned whereas objects can also be `null`. This means that there is no value for the object and we have to treat is specially because then we cannot use any methods of the object.
+
+The reason for the error above is that we want to assign `String` values to `int` variables. As you now know this cannot work because of Javas type system. Nevertheless we can convert `String`s into `int`s by wrapping the variable assignments with an `Integer.valueOf()` method call like this:
 
 ```java
 public class Calculator {
@@ -165,11 +173,13 @@ public class Calculator {
 
 When you compile it now, everything should work fine. You now can run the application using `java -cp . Calculator 2 3`. Take some time to play with your Calculator and test which input values work and which don't.
 
-As may have noticed, as long as we pass two integer values to our app everything works fine. When we only pass one parameter or parameters that aren't integers we get errors, so called exceptions. For now we will ignore this and assume that the user of our program knows what parameters we expect. Later on we will also handle these exceptions.
+As may have noticed, as long as we pass two integer values to our app everything works fine. When we only pass one parameter or parameters that aren't integers we get errors, so called exceptions. For now we will ignore these and assume that the user of our program knows what parameters we expect. Later we will also handle these exceptions.
 
-The next step is to support more arithmetic operations. We will again do this using a parameter and when we finished this task the call to our application should look like this: `java -cp . Calculator 2 3 A`. The third parameter stands for the operation and the supported options are A for add, S for subtract, M for multiply and D for divide. To decide which operation we have to apply we can use an `if` statement.
+We have already come pretty far. We can start the calculator with two parameters that are then added together and the result is printed to the terminal. To have a real calculator we need to support some additional operations, though. The best way to do this is by introducing a third parameter that should be passed to our program. The use should be able to start our program like this to add the numbers 2 and 3: `java -cp . Calculator 2 3 A`. The last parameter stands for the operation the user wants to select. This calculator will support A for add, S for subtract, M for multiply and D for divide. 
 
-An `if` statement only executes a code block if the condition in the if condition is fulfilled. To add the first option to our calculator we have to check if the third value of args is equal to `A` and if this is true we calculate the sum of `a` and `b`.
+To decide which operation we have to apply we have to create a branch for each supported operation that is only executed when the appropriate charater is passed by the user. We can use an `if` statement to do this.
+
+An `if` statement only executes a code block if a certain condition is fulfilled. To add the first option to our calculator we have to check if the third value of args is equal to `A` and when this is true we calculate the sum of `a` and `b`.
 
 ```java
 public class Calculator {
@@ -187,11 +197,11 @@ public class Calculator {
 }
 ```
 
-As you can see I've stored the operation in the `operation` variable because now the rest of the code gets more readable. Also we need to get the first charater of the string stored in `args[2]` because we want to work with charaters instead of strings. The result variable has to be initialized to because it is now only set if the operation is equal to `A`.
+It is a good idea to store the operation in the `operation` variable because then the rest of the code gets more readable. Also we need to get the first charater of the string stored in `args[2]` because we want the charater the user passed to our calculator. The result variable has to be initialized because it is now only set if the operation is equal to `A`.
 
-The if condition is a check if the `operation` is equal to `'A'`. Since `=` is an assignment there is also the `==` to check for equality.
+The if condition checks if the `operation` is equal to `'A'`. Since `=` is an assignment we need another way to check for equality. In Java we can do this using `==`.
 
-The if statement can also be extended with an `else` or an `else if` branch. Using these concepts we can also add the branches for the other operations.
+When we need more than one branch (as we do here) we can add more branches to the if statement by adding `else if` and an `else` branch. Using these concepts we can also add the branches for the other operations.
 
 ```java
 public class Calculator {
@@ -218,7 +228,7 @@ public class Calculator {
 }
 ```
 
-Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method. Besides an `if` statment you can also use a `switch` statement when you have to execute one of multiple branches in your code. The same code as above using a `switch` statement would look similar to this:
+Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method immediately. Besides an `if` statment you can also use a `switch` statement when you have to execute one of multiple branches in your code. The same code as above using a `switch` statement would look similar to this:
 
 ```java
 public class Calculator {
@@ -250,9 +260,9 @@ public class Calculator {
 }
 ```
 
-Each case that should be supported gets covered by a `case` branch. Inside this `case` branch there is the opertation as well as a `break` statement. This is important to exit the switch after something was executed. When we would not add the break statement multiple cases might get executed. Similar to the `else` branch there is the `default` case inside the `switch` statement. This branch is executed when no other condition is met.
+Each branch in the `if` from above gets covered by a `case` branch here. Inside this `case` branch there is the opertation as well as a `break` statement. This is important to exit the switch after something was executed. Otherwise multiple cases might get executed, for example the `case 'M'` and the `default` branch. Similar to the `else` branch there is the `default` case inside the `switch` statement which is executed when no other condition is met.
 
-The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We could do this similar to this:
+The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We can do this using the things we just learned.
 
 ```java
 public class Calculator {
@@ -305,7 +315,7 @@ public class Calculator {
 }
 ```
 
-At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we can catch this exception in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
+At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we catch it in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
 
 # Dynamic Calculator
 In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on these two numbers. After that the program finished and we had to start it again. Now we want to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
