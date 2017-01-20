@@ -318,9 +318,9 @@ public class Calculator {
 At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we catch it in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
 
 # Dynamic Calculator
-In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on these two numbers. After that the program finished and we had to start it again. Now we want to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
+In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on them. Then the program finished and we had to start it again if we wanted to calculate something different. In this section we are going to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
 
-First create a new folder in the `app` directory called `dynamicCalculator` and add a `Calculator.java` file in there. The basic structure of this file will be very similar to the static calculator but instead of integer values we use double because this datatype is better suited for calculations (especially divisions).
+Before we can start writing code we need to create a new folder in the `app` directory called `dynamicCalculator` and add a `Calculator.java` file in there. The basic structure of this file will be very similar to the static calculator but instead of integer values we use double because this datatype is better suited for calculations (especially divisions).
 
 ```java
 public class Calculator {
@@ -332,7 +332,11 @@ public class Calculator {
 }
 ```
 
-Next we want to add user interaction to set the values of `a` and `b`. For each variable we need to print a message to the user, so that he knows what to do, and then read the value the user inputs. Reading a user input can be done using the Scanner class. Therefore the code for reading in `a` and `b` should look like this:
+Next we want to add user interaction to set the values of `a` and `b`. For each variable we need to print a message to the user, so that he knows what to do, and then read the value the user inputs. 
+
+Instead of the `System.out.println` method we used before we are now using the `System.out.print` method to tell the user for which variable we expect an input. The difference between these two methods is that the `println` method also prints a line break at the very end whereas the `print` method doesn't do that.
+
+To read a user input we can use the Scanner class.
 
 ```java
 import java.util.Scanner;
@@ -356,9 +360,11 @@ public class Calculator {
 }
 ``` 
 
-As you can see we created a `scanner` object that is used to read from `System.in`. With this object we can read the integers that should be assigned to `a` and `b`. At the end of the method we add the two numbers and print out the result.
+This was the first time we've created a new object. As you can see a new object is created using the `new` keyword followed by the constructor. By default there is always a constructor with no parameters. For the scanner class we use the constructor that takes the `System.in` as a parameter. This way the scanner will read from the terminal - exactly what we want. 
 
-Similar to the static calculator we now need the operation the user wants to use. To do this we ask the user which operation he want to use and read the next charater. Sadly the Scanner doesn't provide a `nextChar()` method so we have to use the `next()` method to get a String value. Now we can use the `charAt()` method to get the first character of this string.
+Now we can read the values for `a` and `b` by calling the `nextDouble` method of the `scanner` object. At the end of the method we add the two numbers and print out the result.
+
+Similar to the static calculator we now need the operation the user wants to use. As before we ask the user which operation he wants to use and read the next charater. Sadly the Scanner doesn't provide a `nextChar()` method so we have to use the `next()` method to get a String value. Similar to above we can use the `charAt()` method to get the first character of this string.
 
 ```java
 import java.util.Scanner;
@@ -371,14 +377,15 @@ public class Calculator {
 		double result = 0;
 
 		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Input an operation: ");
+		operation = scanner.next().charAt(0);
+
 		System.out.print("Input a value for a: ");
 		a = scanner.nextDouble();
 
 		System.out.print("Input a value for b: ");
 		b = scanner.nextDouble();
-		
-		System.out.print("Input an operation: ");
-		operation = scanner.next().charAt(0);
 		
 		if (operation == 'A') {
 			result = a + b;
@@ -416,9 +423,9 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-The first time the for loop is executed the variable `i` is initialized. After that every time the termination part is checked until it is reached. If the termination condition is not reached the code inside the `for` loop is executed. At the end the incrementation part is executed. The `i++` is a special notation that increments the variable `i` by one every time it is executed.
+The first time the `for` loop is executed the variable `i` is initialized. After that every time the termination part is checked until it is reached. If the termination condition is not reached the code inside the `for` loop is executed. At the end the incrementation part is executed. The `i++` is a special notation that increments the variable `i` by one every time it is executed.
 
-A while loop is a little bit different to a for loop because there is only a termination part in the `while` loop. The initialization part has to be done outside the loop and the increment part has to be done inside the loop. An example of a while loop is:
+A `while` loop is a little bit different compared to a for loop because there is only a termination part in the `while` loop. The initialization part has to be done outside the loop and the increment part has to be done inside the loop. An example of a while loop is:
 
 ```java
 int i = 0;
@@ -428,7 +435,7 @@ while (i < 10) {
 }
 ```
 
-Similar to the while loop the `do-while` loop only contains a termination condition. The difference between the `while` loop and the `do-while` loop is that the code inside the `do-while` is always executed at least once. However the `do-while` loop is used the least often, at least by me. The following example shows you how such a loop can look like:
+Similar to the `while` loop the `do-while` loop only contains a termination condition. The difference between the `while` loop and the `do-while` loop is that the code inside the `do-while` is always executed at least once. However the `do-while` loop is used the least often, at least by me. The following example shows you how such a loop can look like:
 
 ```java
 do {
@@ -443,9 +450,10 @@ import java.util.Scanner;
 
 public class Calculator {
 	public static void main(String[] args) {
-		char operation = 'A';
-
 		Scanner scanner = new Scanner(System.in);
+			
+		System.out.print("Input an operation: ");
+		char operation = scanner.next().charAt(0);
 
 		while (operation != 'E') {
 			double result = 0;
@@ -456,9 +464,6 @@ public class Calculator {
 			System.out.print("Input a value for b: ");
 			double b = scanner.nextDouble();
 			
-			System.out.print("Input an operation: ");
-			operation = scanner.next().charAt(0);
-			
 			if (operation == 'A') {
 				result = a + b;
 			} else if (operation == 'S') {
@@ -467,23 +472,26 @@ public class Calculator {
 				result = a * b;
 			} else if (operation == 'D') {
 				result = a / b;
-			} else if (operation == 'E') {
-				return;
 			} else {
 				System.out.println("Only the operations 'A', 'S', 'M', 'D' and 'E' are allowed.");
 				continue;
 			}
 			System.out.println("Result: " + result);
+			
+			System.out.print("Input an operation: ");
+			operation = scanner.next().charAt(0);
 		}		
 	}
 }
 ```
 
-As you can see I've change the code a little bit according to the previous version so that it works nicely with the loop. Also I've changed the `return` in the `else` brancht to a `continue` which means that the rest of the loop should be skipped. Therefore the loop will start at the beginning again.
+As you can see we've change the code a little bit compared to the previous version so that it works nicely with the loop. Also we've changed the `return` in the `else` branch to a `continue` which means that the rest of the loop should be skipped and the next round should start. 
 
-The last feature we want to add to our calculator to let the user choose between the shortcut and the full name of the operation. Along with the shortcuts it should also be possible to input the full names of the operation, e.g. 'ADD' or 'MULTIPLY'. When we implement this we have to switch the type of our `operation` variable from `char` to `String`. Also we have to change all places where the `operation` is compare to another value. The reason for this is that if you use `==` to compare objects you always check if the object is exactly the same object. Most of the time we don't want to check if both objects are exactly the same instance but rather if the value they hold are the same. When I have two strings that hold the value "ADD" I don't want to check if the objects are the same but if the values the objects hold are the same.
+Since we now ask the user every round of the loop what we should do we also have to read the operation every time a loop roud is executed. Therefore we are asking the user for the next operation at the very end of the loop.
 
-The following code should exlpain this concept a little bit further:
+The last feature we want to add to our calculator to let the user choose between the shortcut and the full name of the operation. Along with the shortcuts it should also be possible to input the full names of the operation, e.g. 'ADD' or 'MULTIPLY'. When we implement this we have to switch the type of our `operation` variable from `char` to `String`. Also we have to change all places where the `operation` is compared to another value. The reason for this is that if you use `==` to compare objects you always check if the object is exactly the same object. Most of the time we don't want to check if both objects are exactly the same instance but rather if the value they hold are the same. When we have two strings that hold the value "ADD" we don't want to check if the objects are the same but if the values the objects hold are the same.
+
+The following code should exlpain this concept:
 ```java
 public class Main {
 	public static void main(String[] args) {
@@ -503,16 +511,21 @@ public class Main {
 }
 ```
 
-Another concept we need for the change we want to implement is to combine boolean conditions. Until now we only have one condition per if statement. When we've implemented the new feature we always have two conditions per if statement and the code inside the if statement should be executed if at least one of the conditions is satisfied. We can do this by using boolean operators such as `||` or `&&`. When you combine two conditions with `||` at least one of the conditions has to be true so that the whole statement becomes true. When you use `&&` to combine conditions every condition must be true so that the whole statement becomes true. In our case the `||` is the right choice. After we've learned these two things we can implement the final feature which will result in a code similar to this:
+Another concept we need for the change we want to implement is to combine boolean conditions. Until now we only have one condition per if statement. When we've implemented the new feature we always have two conditions per if statement and the code inside the if statement should be executed if at least one of the conditions is satisfied. 
+
+We can do this by using boolean operators such as `||` or `&&`. When you combine two conditions with `||` at least one of the conditions has to be true so that the whole statement becomes true. When you use `&&` to combine conditions every condition must be true so that the whole statement becomes true. 
+
+In our case the `||` is the right choice. 
 
 ```java
 import java.util.Scanner;
 
 public class Calculator {
 	public static void main(String[] args) {
-		String operation = "A";
-
 		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Input an operation: ");
+		String operation = scanner.next();
 
 		while (!operation.equals("E") && !operation.equals("EXIT")) {
 			double result = 0;
@@ -522,9 +535,6 @@ public class Calculator {
 
 			System.out.print("Input a value for b: ");
 			double b = scanner.nextDouble();
-			
-			System.out.print("Input an operation: ");
-			operation = scanner.next();
 			
 			if (operation.equals("A") || operation.equals("ADD")) {
 				result = a + b;
@@ -541,12 +551,78 @@ public class Calculator {
 				continue;
 			}
 			System.out.println("Result: " + result);
+
+			System.out.print("Input an operation: ");
+			operation = scanner.next();
 		}		
 	}
 }
 ```
 
 Notice, that the condition of the while loop also changed. Instead of the `!=` we now use `!operation.equals()`.
+
+You may have noticed that we have the same two lines twice in our code. When we ask the user for the next operation that should be calculated we have the exact same lines one time outside of the loop and one time inside the loop. Much better would be if we could encapsulate these two lines into their own method. 
+
+```java
+import java.util.Scanner;
+
+public class Calculator {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		String operation = getOperation(scanner);
+
+		while (!operation.equals("E") && !operation.equals("EXIT")) {
+			double result = 0;
+
+			System.out.print("Input a value for a: ");
+			double a = scanner.nextDouble();
+
+			System.out.print("Input a value for b: ");
+			double b = scanner.nextDouble();
+			
+			if (operation.equals("A") || operation.equals("ADD")) {
+				result = a + b;
+			} else if (operation.equals("S") || operation.equals("SUBTRACT")) {
+				result = a - b;
+			} else if (operation.equals("M") || operation.equals("MULTIPLY")) {
+				result = a * b;
+			} else if (operation.equals("D") || operation.equals("DIVIDE")) {
+				result = a / b;
+			} else if (operation.equals("E") || operation.equals("EXIT")) {
+				return;
+			} else {
+				System.out.println("Only the operations (A)DD, (S)UBTRACT, (M)ULTIPLY, (D)IVIDE and (E)XIT are allowed.");
+				continue;
+			}
+			System.out.println("Result: " + result);
+
+			operation = getOperation(scanner);
+		}		
+	}
+
+	private static String getOperation(Scanner scanner) {
+		System.out.print("Input an operation: ");
+		return scanner.next();
+	}
+}
+```
+
+As you can see we created a method that returns a String using the `next` method of the `scanner` we passed in there as a parameter.
+
+Now we've also finished the dynamic calculator. You can again compile it with `javac Calculator.java` (make sure you are in the correct directory) and execute it with `java -cp . Calculator`. Take some time to play around with the calculator and if you want to some more features (such as error handling for example) you can absolutely do this.
+
+# Wrap up
+Congratulations! You've come to the end of this tutorial. Let's wrap up what you've learned today. We have covered
+* How to create simple programs.
+* How to create variables and methods.
+* How to use `if` and `switch` statements.
+* How to use loops
+* How to do basic error handling
+
+I hope you enjoyed this tutorial and found your passion for programming. Take some time to create your own little test projects and play around with your new knowledge. Only this way you can really learn how to write code.
+
+If you miss anything in this tutorial please feel free to open an issue so we can discuss this further.
 
 # FAQ
 ## How do I open a terminal?
