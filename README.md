@@ -1,16 +1,19 @@
-# This document is work in progress!
+# Java - A Beginners Tutorial
+Are you motivated to learn how to program? Do you want to learn about the most popular programming language that currently exists? Then this tutorial is for you!
 
-# Before we start
-Before we start here are some things you might want to know. These sections should tell you if this tutorial is for you. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
+In the following lines you will learn how to create basic programs using the Java programming language. As I wrote before it is the [most popular programming language](http://www.tiobe.com/tiobe-index/) that currently exists. Therefore it makes perfect sense to know Java.
 
-## What do you need to know?
-This tutorial is for beginners so you don't have to know programming yet. Actually it is good if you don't know programming yet. It is beneficial if you know how to use a terminal, although we only need it to execute our programs. The only real preconditions are that you know how to use a computer and are motivated to learn something new ;). At the end of this tutorial there is a [FAQ section](#faq) with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
+Before we start here are some things you might want to know about this tutorial. In the following two sections I hope to tell you whether this tutorial is for you or not. If you have any additional questions just [open an issue](https://github.com/mvieghofer/java-hello-world/issues).
+
+## Do you need to know how to program?
+This tutorial is for beginners so you don't have to know how to program yet. Actually this tutorial is for people who just start programming. If you already know how to code in another language you might be able to just skim the parts that describe some basic concepts. 
+
+Although we need the terminal just a few times, it is beneficial if you know how to use a terminal. If you aren't familiar with a terminal yet, you find a short [FAQ section](#faq) at the end of this file with some answers to questions you might have. If you cannot solve a problem, you can open an issue again.
 
 ## What you will learn in this tutorial
-At the end of this tutorial you will know the very basics of the Java programming language. You will have written a few basic applications to learn the basics. And hopefully you will have discovered how awesome programming is.
+At the end of this tutorial you will know the very basics of the Java programming language. You will have written a few basic applications and hopefully you will have discovered how awesome programming is.
 
-## What you will not learn in this tutorial
-As I said before this tutorial does only cover the very basics. We will not cover more advanced concepts such as Object Oriented Programming (OOP).
+However this tutorial does only cover the very basics. We will not cover more advanced concepts such as Object Oriented Programming (OOP).
 
 # Setup
 If you want to write java programs you only need two things, a text editor and the JDK (Java Development Toolkit). 
@@ -21,21 +24,20 @@ If you are not sure whether you have the JDK already installed open a Terminal a
 javac 1.8.0_101
 ```
 
-If don't get such a response you have to install the JDK. To do that go to [this website](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and download and install the appropriate version for your computer. After you have done that the command from above should bring up the desired output.
+If don't get such a response you have to install the JDK. To do that go to [this website](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and download and install the appropriate version for your computer. If you are on a Windows Computer you also have to [add the installation directory to your Path](http://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/). After you have done that the command from above should bring up the desired output.
 
-When you don't know which text editor to use I can recommend the [Sublime Text](https://www.sublimetext.com/) editor but you can choose any other editor, too.
+Now that we know that the JDK is installed we also need a good text editor. I can recommend the [Sublime Text](https://www.sublimetext.com/) editor but you can choose any other editor, too.
 
-For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I don't think that these editors are helpful if you are just learning java. They would probably be more distracting than helpful.
+For more advanced java programming there are special text editors (so called IDEs or Integrated Development Environments) with a lot of additioanl features. But I think that these editors are more distracting than helpful if you are just learning java. Therefore you will not need them by now.
 
 The last step of this setup is to clone this repository using `git clone https://github.com/mvieghofer/java-hello-world.git`. `git` is a tool used for software development that helps you store your code on a server. This is especially helpful if you work with multiple people on a project. For this tutorial you just need to know how to download this repository but if you continue programming you should definitely learn more about `git`, too. If you don't have `git` installed or you don't know what cloning means, check out [this short tutorial](https://help.github.com/articles/cloning-a-repository/). 
 
-After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solution for this tutorial. You can always check there how my solution looks like.
-
+After you have cloned this repository open it in your text editor. The `app` folder is your working directory. There you should create all the subfolders for the small example projects we will create. In the solution folder you can find the complete solutions for this tutorial. You can always check there how my solutions look like.
 
 # Hello World
-Typically if you learn a new programming language the first program you write will be a so called 'Hello World' Program. This program will run without any errors and print 'Hello World' to the terminal. 
+Typically if you learn a new programming language the first program you write is a so called 'Hello World' Program. The only thing this program does is to print 'Hello World' to the terminal. 
 
-First you need to create a `helloWorld` folder in the app directory and create a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file, copy the following code to the file and you have your first fully functional Hello World Program created.
+Before we can write any code we need to create a `helloWorld` folder inside the app directory and put a file called `HelloWorld.java` inside the `helloWorld` folder. Open this file and copy the following code into the file to have your first fully functional Hello World Program.
 
 ```java
 public class HelloWorld {
@@ -45,18 +47,32 @@ public class HelloWorld {
 }
 ``` 
 
-Before we run it I will explain what every part does. The file starts with `public class` which creates a new Type. The class keyword is important for OOP but I wont explain it here in detail. After that the name of that comes the name of that type which is HelloWorld. It is important that the name of the class is the same as the name of the file. Otherwise you will get an error while compiling it.
+Before we run it I will briefly explain what every part does. The file starts with `public class HelloWorld` which creates a new publicly visible Type called `HelloWorld`. It is important that the name of the class is the same as the name of the file (the file name only has a `.java` appendix). 
 
-The HelloWorld class has one method called `main`. The `public` keyword at the start of this line indicates that this method can be called from everywhere in your program. The `static` keyword tells Java that you don't have to create an Instance of this class. This is again OOP specific and you can ignore it for now. The third keyword, `void`, tells you what this method is returning after it finishes. Since this method returns `void` we know that we get no result of this method. After `void` comes the name of this method. Inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. 
+After the name we start a code block with an open curly bracket `{`. At the very end of the file this code block is closed again with `}`. In Java everything inside these curly brackets belongs together.
 
-This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is.
+The `HelloWorld` class has one `public static` method called `main`. The `public` keyword indicates that this method can be called from everywhere in your program. The `static` keyword tells Java that you don't have to create an Instance of this class. This is again OOP specific and you can ignore it for now. 
 
-Inside this method we print the string `Hello World!` to the terminal. More complex programs will do more complex things here of course.
+The third keyword, `void`, tells you that this method returns nothing. If the method would return `int` or `String` instead of `void` we would know that   it returns an `int` or a `String` after it finishes.
 
-To run this program we first have to compile it in order to convert it into a format java can execute it. To do this open a terminal and navigate to the app folder of this repository and execute the following command `javac HelloWorld.java`. This produces a `HelloWorld.class` file which then can be executed by java with the command `java -cp . HelloWorld`. This command tells java to execute the `HelloWorld` program in the current folder. Now you should see the `Hello World!` in your terminal.
+After `void` comes the name of this method and inside the brackets one parameter is defined. In this case this parameter is an array of strings called `args`. This parameter can contain values that are passed from the user of your app from the outside.
+
+This `main` method is a special method that defines the main entrypoint of your program. Every program has to have one of these methods no matter how big or small it is that has the exact same signature as the one above.
+
+The body (that's how the code inside the method is called) inside this method contains only one line of code. Here we print the string `Hello World!` to the terminal. If you create more complex programs you will do more complex things here, of course.
+
+Now that we know what the parts of this program do we can run it. To do this we need the Java Runtime Environment (JRE). Most computers already have the JRE installed, you've also installed it together with the JDK.
+
+However the JRE cannot understand this code as we wrote it above, we have to translate it into a special format. The process of doing that is called compiling and the format we need to compile the source code to is called the Bytecode. This is the secret sauce of Java! Since programs are converted in Bytecode every Java program can be executed on every Computer that has the JRE installed, no matter where you've compiled it. For other programming languages such as C++ or C this is not possible.
+
+To compile our program we need to open a terminal and navigate to the app folder of this repository. There we execute the following command `javac HelloWorld.java` which tells the Java compiler (`javac`) to compile the file `HelloWorld.java`. 
+
+This produces a `HelloWorld.class` file which then can be executed with the command `java -cp . HelloWorld`. 
+
+This command tells Java to execute the `HelloWorld` program in the current folder (`-cp .`). Now you should see the `Hello World!` in your terminal.
 
 # Static Calculator
-Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator application that can operate with two numbers.
+Now that you know how to create a simple Java application you can go a step further and create an application that does a little more. Lets create a calculator that can operate with two numbers.
 
 In the app folder create a new directory called `staticCalculator` and add a new file `Calculator.java` in there. Open the `Calculator.java` file and add the following base structure of our calculator.
 
@@ -70,7 +86,7 @@ public class Calculator {
 
 As you can see the main method only contains a single line comment. This code is not executed and just adds additional information for the developers. Besides the single line comments (which start with `//`) there are also mutli line comments. These comments start with `/*` and end with `*/` and can contain line breaks.
 
-Now we need two digits our calculator can work with. To do this replace the comment with the two variable declarations `int a = 1;` and `int b = 2;`. The result should be something like this:
+To be able to operate with two numbers we need something that holds these two numbers. Therefore we need to replace the comment with the two variable declarations `int a = 1;` and `int b = 2;`. The result should look like this:
 
 ```java
 public class Calculator {
@@ -80,11 +96,9 @@ public class Calculator {
 	}
 }
 ```
-We have just created two integer variables that hold the digits 1 and 2. There are [other datatypes](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) but if you need a number, integer is very often what you need.
+Both variables can hold integers and are initialized with the digits 1 and 2 (these values can be changed later on). There are [other datatypes](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) we could have used but for now we stay with `int`.
 
-To keep things simple we will only supports adding two numbers at first. Subtractions, mutliplications and divisions are added later. To do this we create a third variable called `result` which hold the sum of `a` and `b`. After we have calculated the sum we also want to print in out.
-
-Here is my solution to this problem:
+To keep things simple we will only supports adding two numbers at first. Subtractions, mutliplications and divisions will be added later. When we calculated the result we need to store it somewhere. We could use one of the variables we already created - remember when I told you before that the values of the variables can be changed over time; this could be such a moment - however this might be confusing why we will create a third variable called `result`. This variable should hold the sum of `a`and `b`.
 
 ```java
 public class Calculator {
@@ -97,11 +111,17 @@ public class Calculator {
 }
 ```
 
+To be able to see the result we have to print it to the console. Similar to the first example we use the `System.out.println` method to do this. You can insert any string between the apostrophes, this will only affect the final string that will be printed to the terminal.
+
 When you compile the app with `javac Calculator.java` and then run `java -cp . Calculator` you should see `Result: 3` in your terminal.
 
-Now you've finished your first calculator app. Even though this app is rather limited in its functionality we are making great progress. Next we want to make the variables `a` and `b` configurable from the outside. As we've already learned above there is the `args` parameter that contains parameters passed from the outside. Now we are going to use this parameter to make our two variables configurable.
+Congratulations! We just finished the first program that calculates a value. Even though this app is rather limited in its functionality we are making great progress. 
 
-When we set `a` to the first value of the `args` array and `b` to the second value our result will be dynamically calculated every time the application runs. Before we can do this you have to know that arrays in java are zero based. This means that the first value of every array can be read on the index 0, the second one on the index 1 and so on. Therefore the new variable declarations should look like `int a = args[0];` and `int b = args[1];`.
+Next we want to make the variables `a` and `b` configurable from the outside. As we've already learned above there is the `args` parameter that contains parameters passed from the outside. We can use this to let the user configure which values should be added.
+
+When the user starts our calculator two integers should be passed to our program. Both these integers are passed inside the `args` parameter to our main method. We can set `a` to the first value of the `args` array and `b` to the second value. Our result will be dynamically calculated every time the application runs. 
+
+Java - actually a lot of programming languages - have the specialty that they are zero based. This means that typically when you want to set or retrieve the first value of an array or any other collection you have to start at the index `0`. Now as we know that we can change the variable declarations of `a`and `b` so that they look like `int a = args[0];` and `int b = args[1];`.
 
 ```java
 public class Calculator {
@@ -126,15 +146,19 @@ Calculator.java:4: error: incompatible types: String cannot be converted to int
 2 errors
 ```
 
-Java is statically and strongly typed. That means that every variable has to have a predefined type that cannot change over time. When you create a variable of the type `int` this variable can only hold integer values and can never hold for example a string value even when the string value might be `"2"`. 
+The good thing about the Java compiler is that if there is an error it tells you exactly where the error is. Most of the times you can tell exactly where the error is after reading these compiler errors. 
 
-The Java type system consists of primitive datatypes such as `int` for integer values, `char` for characters or `float` for floating point numbers and classes. For each of the primitive datatypes also a class exists. For `int` also the `Integer` class exists, for `char` there is the `Character` class exists and so on. An instance of a class is called an object. This means a variable of the type `String` is an object of the `String` class. Our `int` values on the other hand aren't objects because their type is a primitive one. If we declare them as `Integer` they would be objects, too.
+The reason why we get this error is that Java is statically and strongly typed. That means that every variable has to have a predefined type that cannot change over time. When you create a variable of the type `int` this variable can only hold integer values and can never hold for example a string value even when the string value might be `"2"`. Don't mix that up with what I've said before about the values of variables, they can change over time. However when you assign a new value to a variable its type cannot change.
 
-One big difference between the primitive datatypes and the related classes is that primitive datatypes can only hold data whereas the classes also provide methods to manipulate the data the variable holds. For example you could convert an `Integer` value to a string by calling the `toString()` method.
+The Java type system consists of primitive datatypes such as `int` for integer values, `char` for characters or `float` for floating point numbers and classes. For each of the primitive datatypes also a class exists. There is the `Integer` class that corresponds to the `int` type and so on. 
 
-Another difference is that primitive datatypes must have a value assigned whereas objects can also be `null`. This means that there is no value for the object and we have to treat is specially because then we cannot use any methods of object.
+An instance of a class is called an object. This means a variable of the type `String` is an object of the class `String`. Our `int` values on the other hand aren't objects because their type is a primitive one. If we declare them as `Integer` they would be objects, too.
 
-The reason for the error above is that we want to assign `String` values to `int` variables. As you now know this cannot work because of Javas type system. Nevertheless we can convert Strings into ints by wrapping the variable assignments with an `Integer.valueOf()` method call like this:
+One big difference between the primitive datatypes and classes is that primitive datatypes can only hold data whereas the classes also provide methods to manipulate the data the variable holds. For example you could convert an `Integer` object to a string by calling its `toString()` method.
+
+Another difference is that primitive datatypes must have a value assigned whereas objects can also be `null`. This means that there is no value for the object and we have to treat is specially because then we cannot use any methods of the object.
+
+The reason for the error above is that we want to assign `String` values to `int` variables. As you now know this cannot work because of Javas type system. Nevertheless we can convert `String`s into `int`s by wrapping the variable assignments with an `Integer.valueOf()` method call like this:
 
 ```java
 public class Calculator {
@@ -149,11 +173,13 @@ public class Calculator {
 
 When you compile it now, everything should work fine. You now can run the application using `java -cp . Calculator 2 3`. Take some time to play with your Calculator and test which input values work and which don't.
 
-As may have noticed, as long as we pass two integer values to our app everything works fine. When we only pass one parameter or parameters that aren't integers we get errors, so called exceptions. For now we will ignore this and assume that the user of our program knows what parameters we expect. Later on we will also handle these exceptions.
+As may have noticed, as long as we pass two integer values to our app everything works fine. When we only pass one parameter or parameters that aren't integers we get errors, so called exceptions. For now we will ignore these and assume that the user of our program knows what parameters we expect. Later we will also handle these exceptions.
 
-The next step is to support more arithmetic operations. We will again do this using a parameter and when we finished this task the call to our application should look like this: `java -cp . Calculator 2 3 A`. The third parameter stands for the operation and the supported options are A for add, S for subtract, M for multiply and D for divide. To decide which operation we have to apply we can use an `if` statement.
+We have already come pretty far. We can start the calculator with two parameters that are then added together and the result is printed to the terminal. To have a real calculator we need to support some additional operations, though. The best way to do this is by introducing a third parameter that should be passed to our program. The use should be able to start our program like this to add the numbers 2 and 3: `java -cp . Calculator 2 3 A`. The last parameter stands for the operation the user wants to select. This calculator will support A for add, S for subtract, M for multiply and D for divide. 
 
-An `if` statement only executes a code block if the condition in the if condition is fulfilled. To add the first option to our calculator we have to check if the third value of args is equal to `A` and if this is true we calculate the sum of `a` and `b`.
+To decide which operation we have to apply we have to create a branch for each supported operation that is only executed when the appropriate charater is passed by the user. We can use an `if` statement to do this.
+
+An `if` statement only executes a code block if a certain condition is fulfilled. To add the first option to our calculator we have to check if the third value of args is equal to `A` and when this is true we calculate the sum of `a` and `b`.
 
 ```java
 public class Calculator {
@@ -171,11 +197,11 @@ public class Calculator {
 }
 ```
 
-As you can see I've stored the operation in the `operation` variable because now the rest of the code gets more readable. Also we need to get the first charater of the string stored in `args[2]` because we want to work with charaters instead of strings. The result variable has to be initialized to because it is now only set if the operation is equal to `A`.
+It is a good idea to store the operation in the `operation` variable because then the rest of the code gets more readable. Also we need to get the first charater of the string stored in `args[2]` because we want the charater the user passed to our calculator. The result variable has to be initialized because it is now only set if the operation is equal to `A`.
 
-The if condition is a check if the `operation` is equal to `'A'`. Since `=` is an assignment there is also the `==` to check for equality.
+The if condition checks if the `operation` is equal to `'A'`. Since `=` is an assignment we need another way to check for equality. In Java we can do this using `==`.
 
-The if statement can also be extended with an `else` or an `else if` branch. Using these concepts we can also add the branches for the other operations.
+When we need more than one branch (as we do here) we can add more branches to the if statement by adding `else if` and an `else` branch. Using these concepts we can also add the branches for the other operations.
 
 ```java
 public class Calculator {
@@ -202,7 +228,7 @@ public class Calculator {
 }
 ```
 
-Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method. Besides an `if` statment you can also use a `switch` statement when you have to execute one of multiple branches in your code. The same code as above using a `switch` statement would look similar to this:
+Now we support all operations and we also have some basic error handling if the user inputs a wrong operation. The `return;` tells the program to quit this method immediately. Besides an `if` statment you can also use a `switch` statement when you have to execute one of multiple branches in your code. The same code as above using a `switch` statement would look similar to this:
 
 ```java
 public class Calculator {
@@ -234,9 +260,9 @@ public class Calculator {
 }
 ```
 
-Each case that should be supported gets covered by a `case` branch. Inside this `case` branch there is the opertation as well as a `break` statement. This is important to exit the switch after something was executed. When we would not add the break statement multiple cases might get executed. Similar to the `else` branch there is the `default` case inside the `switch` statement. This branch is executed when no other condition is met.
+Each branch in the `if` from above gets covered by a `case` branch here. Inside this `case` branch there is the opertation as well as a `break` statement. This is important to exit the switch after something was executed. Otherwise multiple cases might get executed, for example the `case 'M'` and the `default` branch. Similar to the `else` branch there is the `default` case inside the `switch` statement which is executed when no other condition is met.
 
-The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We could do this similar to this:
+The last step to complete our static calulcator would be to add some more error handling. As we found out previously we need to check if the `args` array has enough entries (3 in this case) and if the first two entries are integers. We can do this using the things we just learned.
 
 ```java
 public class Calculator {
@@ -289,12 +315,12 @@ public class Calculator {
 }
 ```
 
-At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we can catch this exception in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
+At the very beginning we check if the array does not contain exactly three elements. If this is true we print a message that tells the user how to use this application and quit. After that we now initialize our variables `a` and `b` with 0. Then we make the same assignments as in our previous version to `a` and `b` but wrap them in a try-catch block. Whenever an error occurs inside the try block that leads to an exeption we catch it in the catch block. For number conversion a `NumberFormatException` is thrown whenever the value to be converted is not a valid number. Inside the catch block we print an error message and quit the method again.
 
 # Dynamic Calculator
-In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on these two numbers. After that the program finished and we had to start it again. Now we want to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
+In the last section we've built a static caluclator that takes two numbers and applies an arithmetic operation on them. Then the program finished and we had to start it again if we wanted to calculate something different. In this section we are going to build a calculator that asks the user for an operation and two numbers, applies the operation on the two numbers and then repeats these steps. 
 
-First create a new folder in the `app` directory called `dynamicCalculator` and add a `Calculator.java` file in there. The basic structure of this file will be very similar to the static calculator but instead of integer values we use double because this datatype is better suited for calculations (especially divisions).
+Before we can start writing code we need to create a new folder in the `app` directory called `dynamicCalculator` and add a `Calculator.java` file in there. The basic structure of this file will be very similar to the static calculator but instead of integer values we use double because this datatype is better suited for calculations (especially divisions).
 
 ```java
 public class Calculator {
@@ -306,7 +332,11 @@ public class Calculator {
 }
 ```
 
-Next we want to add user interaction to set the values of `a` and `b`. For each variable we need to print a message to the user, so that he knows what to do, and then read the value the user inputs. Reading a user input can be done using the Scanner class. Therefore the code for reading in `a` and `b` should look like this:
+Next we want to add user interaction to set the values of `a` and `b`. For each variable we need to print a message to the user, so that he knows what to do, and then read the value the user inputs. 
+
+Instead of the `System.out.println` method we used before we are now using the `System.out.print` method to tell the user for which variable we expect an input. The difference between these two methods is that the `println` method also prints a line break at the very end whereas the `print` method doesn't do that.
+
+To read a user input we can use the Scanner class.
 
 ```java
 import java.util.Scanner;
@@ -330,9 +360,11 @@ public class Calculator {
 }
 ``` 
 
-As you can see we created a `scanner` object that is used to read from `System.in`. With this object we can read the integers that should be assigned to `a` and `b`. At the end of the method we add the two numbers and print out the result.
+This was the first time we've created a new object. As you can see a new object is created using the `new` keyword followed by the constructor. By default there is always a constructor with no parameters. For the scanner class we use the constructor that takes the `System.in` as a parameter. This way the scanner will read from the terminal - exactly what we want. 
 
-Similar to the static calculator we now need the operation the user wants to use. To do this we ask the user which operation he want to use and read the next charater. Sadly the Scanner doesn't provide a `nextChar()` method so we have to use the `next()` method to get a String value. Now we can use the `charAt()` method to get the first character of this string.
+Now we can read the values for `a` and `b` by calling the `nextDouble` method of the `scanner` object. At the end of the method we add the two numbers and print out the result.
+
+Similar to the static calculator we now need the operation the user wants to use. As before we ask the user which operation he wants to use and read the next charater. Sadly the Scanner doesn't provide a `nextChar()` method so we have to use the `next()` method to get a String value. Similar to above we can use the `charAt()` method to get the first character of this string.
 
 ```java
 import java.util.Scanner;
@@ -345,14 +377,15 @@ public class Calculator {
 		double result = 0;
 
 		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Input an operation: ");
+		operation = scanner.next().charAt(0);
+
 		System.out.print("Input a value for a: ");
 		a = scanner.nextDouble();
 
 		System.out.print("Input a value for b: ");
 		b = scanner.nextDouble();
-		
-		System.out.print("Input an operation: ");
-		operation = scanner.next().charAt(0);
 		
 		if (operation == 'A') {
 			result = a + b;
@@ -390,9 +423,9 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-The first time the for loop is executed the variable `i` is initialized. After that every time the termination part is checked until it is reached. If the termination condition is not reached the code inside the `for` loop is executed. At the end the incrementation part is executed. The `i++` is a special notation that increments the variable `i` by one every time it is executed.
+The first time the `for` loop is executed the variable `i` is initialized. After that every time the termination part is checked until it is reached. If the termination condition is not reached the code inside the `for` loop is executed. At the end the incrementation part is executed. The `i++` is a special notation that increments the variable `i` by one every time it is executed.
 
-A while loop is a little bit different to a for loop because there is only a termination part in the `while` loop. The initialization part has to be done outside the loop and the increment part has to be done inside the loop. An example of a while loop is:
+A `while` loop is a little bit different compared to a for loop because there is only a termination part in the `while` loop. The initialization part has to be done outside the loop and the increment part has to be done inside the loop. An example of a while loop is:
 
 ```java
 int i = 0;
@@ -402,7 +435,7 @@ while (i < 10) {
 }
 ```
 
-Similar to the while loop the `do-while` loop only contains a termination condition. The difference between the `while` loop and the `do-while` loop is that the code inside the `do-while` is always executed at least once. However the `do-while` loop is used the least often, at least by me. The following example shows you how such a loop can look like:
+Similar to the `while` loop the `do-while` loop only contains a termination condition. The difference between the `while` loop and the `do-while` loop is that the code inside the `do-while` is always executed at least once. However the `do-while` loop is used the least often, at least by me. The following example shows you how such a loop can look like:
 
 ```java
 do {
@@ -417,9 +450,10 @@ import java.util.Scanner;
 
 public class Calculator {
 	public static void main(String[] args) {
-		char operation = 'A';
-
 		Scanner scanner = new Scanner(System.in);
+			
+		System.out.print("Input an operation: ");
+		char operation = scanner.next().charAt(0);
 
 		while (operation != 'E') {
 			double result = 0;
@@ -430,9 +464,6 @@ public class Calculator {
 			System.out.print("Input a value for b: ");
 			double b = scanner.nextDouble();
 			
-			System.out.print("Input an operation: ");
-			operation = scanner.next().charAt(0);
-			
 			if (operation == 'A') {
 				result = a + b;
 			} else if (operation == 'S') {
@@ -441,23 +472,26 @@ public class Calculator {
 				result = a * b;
 			} else if (operation == 'D') {
 				result = a / b;
-			} else if (operation == 'E') {
-				return;
 			} else {
 				System.out.println("Only the operations 'A', 'S', 'M', 'D' and 'E' are allowed.");
 				continue;
 			}
 			System.out.println("Result: " + result);
+			
+			System.out.print("Input an operation: ");
+			operation = scanner.next().charAt(0);
 		}		
 	}
 }
 ```
 
-As you can see I've change the code a little bit according to the previous version so that it works nicely with the loop. Also I've changed the `return` in the `else` brancht to a `continue` which means that the rest of the loop should be skipped. Therefore the loop will start at the beginning again.
+As you can see we've change the code a little bit compared to the previous version so that it works nicely with the loop. Also we've changed the `return` in the `else` branch to a `continue` which means that the rest of the loop should be skipped and the next round should start. 
 
-The last feature we want to add to our calculator to let the user choose between the shortcut and the full name of the operation. Along with the shortcuts it should also be possible to input the full names of the operation, e.g. 'ADD' or 'MULTIPLY'. When we implement this we have to switch the type of our `operation` variable from `char` to `String`. Also we have to change all places where the `operation` is compare to another value. The reason for this is that if you use `==` to compare objects you always check if the object is exactly the same object. Most of the time we don't want to check if both objects are exactly the same instance but rather if the value they hold are the same. When I have two strings that hold the value "ADD" I don't want to check if the objects are the same but if the values the objects hold are the same.
+Since we now ask the user every round of the loop what we should do we also have to read the operation every time a loop roud is executed. Therefore we are asking the user for the next operation at the very end of the loop.
 
-The following code should exlpain this concept a little bit further:
+The last feature we want to add to our calculator to let the user choose between the shortcut and the full name of the operation. Along with the shortcuts it should also be possible to input the full names of the operation, e.g. 'ADD' or 'MULTIPLY'. When we implement this we have to switch the type of our `operation` variable from `char` to `String`. Also we have to change all places where the `operation` is compared to another value. The reason for this is that if you use `==` to compare objects you always check if the object is exactly the same object. Most of the time we don't want to check if both objects are exactly the same instance but rather if the value they hold are the same. When we have two strings that hold the value "ADD" we don't want to check if the objects are the same but if the values the objects hold are the same.
+
+The following code should exlpain this concept:
 ```java
 public class Main {
 	public static void main(String[] args) {
@@ -477,16 +511,21 @@ public class Main {
 }
 ```
 
-Another concept we need for the change we want to implement is to combine boolean conditions. Until now we only have one condition per if statement. When we've implemented the new feature we always have two conditions per if statement and the code inside the if statement should be executed if at least one of the conditions is satisfied. We can do this by using boolean operators such as `||` or `&&`. When you combine two conditions with `||` at least one of the conditions has to be true so that the whole statement becomes true. When you use `&&` to combine conditions every condition must be true so that the whole statement becomes true. In our case the `||` is the right choice. After we've learned these two things we can implement the final feature which will result in a code similar to this:
+Another concept we need for the change we want to implement is to combine boolean conditions. Until now we only have one condition per if statement. When we've implemented the new feature we always have two conditions per if statement and the code inside the if statement should be executed if at least one of the conditions is satisfied. 
+
+We can do this by using boolean operators such as `||` or `&&`. When you combine two conditions with `||` at least one of the conditions has to be true so that the whole statement becomes true. When you use `&&` to combine conditions every condition must be true so that the whole statement becomes true. 
+
+In our case the `||` is the right choice. 
 
 ```java
 import java.util.Scanner;
 
 public class Calculator {
 	public static void main(String[] args) {
-		String operation = "A";
-
 		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Input an operation: ");
+		String operation = scanner.next();
 
 		while (!operation.equals("E") && !operation.equals("EXIT")) {
 			double result = 0;
@@ -496,9 +535,6 @@ public class Calculator {
 
 			System.out.print("Input a value for b: ");
 			double b = scanner.nextDouble();
-			
-			System.out.print("Input an operation: ");
-			operation = scanner.next();
 			
 			if (operation.equals("A") || operation.equals("ADD")) {
 				result = a + b;
@@ -515,12 +551,78 @@ public class Calculator {
 				continue;
 			}
 			System.out.println("Result: " + result);
+
+			System.out.print("Input an operation: ");
+			operation = scanner.next();
 		}		
 	}
 }
 ```
 
 Notice, that the condition of the while loop also changed. Instead of the `!=` we now use `!operation.equals()`.
+
+You may have noticed that we have the same two lines twice in our code. When we ask the user for the next operation that should be calculated we have the exact same lines one time outside of the loop and one time inside the loop. Much better would be if we could encapsulate these two lines into their own method. 
+
+```java
+import java.util.Scanner;
+
+public class Calculator {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		String operation = getOperation(scanner);
+
+		while (!operation.equals("E") && !operation.equals("EXIT")) {
+			double result = 0;
+
+			System.out.print("Input a value for a: ");
+			double a = scanner.nextDouble();
+
+			System.out.print("Input a value for b: ");
+			double b = scanner.nextDouble();
+			
+			if (operation.equals("A") || operation.equals("ADD")) {
+				result = a + b;
+			} else if (operation.equals("S") || operation.equals("SUBTRACT")) {
+				result = a - b;
+			} else if (operation.equals("M") || operation.equals("MULTIPLY")) {
+				result = a * b;
+			} else if (operation.equals("D") || operation.equals("DIVIDE")) {
+				result = a / b;
+			} else if (operation.equals("E") || operation.equals("EXIT")) {
+				return;
+			} else {
+				System.out.println("Only the operations (A)DD, (S)UBTRACT, (M)ULTIPLY, (D)IVIDE and (E)XIT are allowed.");
+				continue;
+			}
+			System.out.println("Result: " + result);
+
+			operation = getOperation(scanner);
+		}		
+	}
+
+	private static String getOperation(Scanner scanner) {
+		System.out.print("Input an operation: ");
+		return scanner.next();
+	}
+}
+```
+
+As you can see we created a method that returns a String using the `next` method of the `scanner` we passed in there as a parameter.
+
+Now we've also finished the dynamic calculator. You can again compile it with `javac Calculator.java` (make sure you are in the correct directory) and execute it with `java -cp . Calculator`. Take some time to play around with the calculator and if you want to some more features (such as error handling for example) you can absolutely do this.
+
+# Wrap up
+Congratulations! You've come to the end of this tutorial. Let's wrap up what you've learned today. We have covered
+* How to create simple programs.
+* How to create variables and methods.
+* How to use `if` and `switch` statements.
+* How to use loops
+* How to do basic error handling
+
+I hope you enjoyed this tutorial and found your passion for programming. Take some time to create your own little test projects and play around with your new knowledge. Only this way you can really learn how to write code.
+
+If you miss anything in this tutorial please feel free to open an issue so we can discuss this further.
 
 # FAQ
 ## How do I open a terminal?
